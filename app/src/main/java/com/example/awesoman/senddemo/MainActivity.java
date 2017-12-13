@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         responseBroadcastReceiver =new ResponseBroadcastReceiver();
         registerReceiver(responseBroadcastReceiver,intentFilter);
 
+
+        /*
+            1.
+            在输入框 et  和  et1 中输入数字
+            点击btn按钮，将框内字符转成数字，
+            作值放到intent中，发送广播
+         */
         ((Button)findViewById(R.id.btn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         Log.i("cen","onNewIntent");
+        /*
+               5.终点，从ResponseBroadcastReceiver 接收数据
+         */
         long response = intent.getLongExtra("response",-1);
-        tv.setText(""+response);
+        tv.setText("请岑俊辉吃饭"+response+"次");
     }
 
     @Override
